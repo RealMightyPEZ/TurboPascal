@@ -1,31 +1,48 @@
+{*
+* Program: MyPi.pas
+* Leibniz formula for approximating pi in TurboPascal 3
+*
+* infinite series formula pi/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 ..... forever
+*
+* for the sake of simplification our code is pi = 4 - 4/3 + 4/5 - 4/7 ...
+*
+* The series approaches Pi from above and below, so our output is
+* the average of the final 2 sums
+*
+*}
+
 var
-  sum       : Real;
-  x,d       : Real;
-  Count     : Integer;
-  Odd       : Boolean;
+  Sum,PrevSum,AvgSum  : Real;
+  x                   : Real;
+  Count               : Integer;
+  IsOdd               : Boolean;
+  MaxIter             : Integer;
 
 begin
   x := 3;
-  d := 4;
   Sum := 4;
-  Odd := True;
+  IsOdd := True;
   Count := 0;
-
-  Writeln(#13#10, ' Iteration Value', #13,#10);
+  MaxIter := 31000;
 
   ClrScr;
+  Writeln('Begin Calculating Pi');
 
   repeat
     Count := Count + 1;
-    if Odd then
-      Sum := Sum - d/x
+    PrevSum := Sum;
+    if IsOdd then
+      Sum := Sum - 4/x
     else
-      Sum := Sum + d/x;
+      Sum := Sum + 4/x;
     x := x + 2;
 
-    Odd := (Not Odd);
+    IsOdd := (Not IsOdd);
 
-    writeln(Sum : 0 : 7);
-  Until (Count > 10000);
+    if (count = (MaxIter - 1)) then
+      avgSum := (Sum + PrevSum) / 2;
+  until (Count >= MaxIter);
+  writeln(avgSum : 0 : 10);
 
 end.
+
