@@ -1,4 +1,4 @@
-Minimal necessary files for CPM-80
+Minimal necessary files for CPM-80:
 
   Turbo.com, Turbo.msg, Turbo.ovr, Tinst.com, Tinst.dta, Tinst.msg
 
