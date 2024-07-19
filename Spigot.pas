@@ -1,16 +1,20 @@
+{*
 /* Written by: Simeon Simeonov */
 /* Modified by MightyPEZ */
-/* Rabinowitz, Stanley; Wagon, Stan (1995). "A Spigot Algorithm for the Digits of Pi" (PDF). American Mathematical Monthly. 102 (3): 195–203. */
+/*[B Rabinowitz, Stanley; Wagon, Stan (1995). "A Spigot Algorithm for the Digits of Pi" (PDF). American Mathematical Monthly.
+*}
 
-Program Pi Spigot;
+
+Program PiSpigot;
 const n    = 1000;
-      len  = 10*n div 3;
+var   len : integer;
 var   i, j, k, q, x, nines, predigit : integer;
-      a                              : array[1..len] of integer;
+      a                              : array[1..10000] of integer;
 
 begin
+  len := Round((10*n) / 3);
   for j := 1 to len do a[j] := 2; {Start with 2s}
-  nines := 0; predigit := 0 {First predigit is a 0}
+  nines := 0; predigit := 0; {First predigit is a 0}
   for j := 1 to n do
   begin q := 0;
     for i := len downto 1 do {Work backwards}
@@ -37,3 +41,4 @@ begin
   end;
 writeln(predigit);
 end.
+
